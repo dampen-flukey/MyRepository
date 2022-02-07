@@ -1,6 +1,8 @@
 import random
 from re import S
 
+
+# creating my first game
 def gameWin(comp, you):
     win = None
     gameValid = False
