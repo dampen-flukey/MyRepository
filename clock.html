@@ -11,7 +11,7 @@
 
         #collapseTwo {
             background-color: rgb(166, 213, 135);
-            height: 100px;
+
             text-align: center;
             color: black;
         }
@@ -38,12 +38,12 @@
         let month;
         let year;
         setInterval(() => {
-            a = new Date("12-02-2022");
+            a = new Date();
             second = a.getSeconds();
             hours = a.getHours();
             min = a.getMinutes();
-            day = a.getUTCDay();
-            month = a.getMonth();
+            day = a.getDate();
+            month = a.getMonth() + 1;
             year = a.getFullYear();
 
             if (hours < 10) {
