@@ -10,8 +10,10 @@
         }
 
         #collapseTwo {
-            background-color: aquamarine;
+            background-color: rgb(166, 213, 135);
+            height: 100px;
             text-align: center;
+            color: black;
         }
     </style>
     <!-- Required meta tags -->
@@ -25,33 +27,48 @@
     <title>Time Clock!</title>
 </head>
 
-<body>
+<body style="background-color: black;">
 
     <script>
         let a;
         let date;
-        let day;
+        let hours;
         let second;
+
+        let month;
+        let year;
         setInterval(() => {
-            a = new Date();
+            a = new Date("12-02-2022");
             second = a.getSeconds();
             hours = a.getHours();
             min = a.getMinutes();
+            day = a.getUTCDay();
+            month = a.getMonth();
+            year = a.getFullYear();
+
             if (hours < 10) {
-                hours = `0${hours}`
+                hours = `0${hours}`;
             }
             if (second < 10) {
-                second = `0${second}`
+                second = `0${second}`;
+
             }
             if (min < 10) {
-                min = `0${min}`
+                min = `0${min}`;
             }
-            date = 'Current time in India (Bharat) is ' + hours + ':' + min + ':' + second;
-            document.getElementById('time').innerText = date;
+            if (day < 10) {
+                day = `0${day}`
+            }
+            if (month < 10) {
+                month = `0${month}`
+            }
+
+            date = 'Current time is ' + hours + ':' + min + ':' + second;
+            document.getElementById('time').innerText = date + " on " + `${day}/${month}/${year}`;
         }, 1000);
 
     </script>
-    <div class="container" id="main">
+    <div class="container" id="main" style="width: 800px;">
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
@@ -75,13 +92,13 @@
                 <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Show IST Now
+                        Show IST Now!
                     </button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <time id="time"></time>
+                        <time id="time" style="padding: top 300px;"></time>
                     </div>
                 </div>
             </div>
