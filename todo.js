@@ -37,14 +37,6 @@ function clearListFunc() {
 
 function display() {
     console.log('calling display..');
-    if (localStorage.getItem('itemsJSON') != null && itemArray.length > 0) {
-        `<tr>
-            <th scope="col">Sl. No.</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Action</th>
-        </tr>`
-    }
     let tableBody = document.getElementById("tableBody");
     let str = "";
     if (itemArray != null && itemArray.length > 0)
