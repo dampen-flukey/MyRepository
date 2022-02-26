@@ -1,0 +1,21 @@
+{
+    "params":
+    {
+        "local_server" : "True",
+        "local_uri" : "mysql://root:@localhost/codingthunder",
+        "prod_uri" : "mysql://root:@localhost/codingthunder",
+        "gh_url" : "https://github.com/dampen-flukey",
+        "tw_url" : "https://twitter.com/ManHasNoSurname",
+        "gmail_user" : "dampenflukey007@gmail.com",
+        "gmail_password" : "1234",
+        "no_of_posts_to_show_on_home" : 3,
+        "blog_name" : "The Hurricane Blogger",
+        "start_date" : "2022",
+        "admin_user" : "Prateek@24",
+        "admin_password" : "Prateek@24",
+        "upload_location" : "/Users/prateek/Downloads/flaskr/uploads"
+    }
+
+
+
+}

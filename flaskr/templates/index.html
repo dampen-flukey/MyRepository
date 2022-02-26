@@ -1,0 +1,48 @@
+{%extends "layout.html" %}
+{% block body %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('{{url_for('static', filename='assets/img/home-bg.jpg')}}');">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>The Hurricane</h1>
+                    <span class="subheading">A Blog By P.S.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            {% for post in posts %}
+            {{ i }}
+            <div class="post-preview">
+                <a href="post/{{ post.slug }}">
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <h3 class="post-subtitle">{{ post.content[0:15] }}...<h6>continue reading</h6>
+                    </h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="{{ params['tw_url']}}" target="_blank">P.S.</a>
+                    on {{ post.date }}
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            {% endfor %}
+
+            <div class="d-flex justify-content-end mb-4">
+                <nav class="blog-pagination" aria-label="Pagination">
+                    <a class="btn btn-outline-secondary" href="{{prev}}">Older</a>
+                    <a class="btn btn-outline-primary" href="{{next}}">Newer</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
