@@ -40,9 +40,13 @@ let quest_div = document.getElementById('quest');
 let ans_div = document.getElementById('ans');
 let correct = 0;
 
+
 loadQuiz();
 function loadQuiz() {
+
     deselectOption();
+    document.getElementById('restart').style.display = 'none';
+    document.getElementById("sub").innerHTML = "Submit";
     const currentQ = quizData[current];
     quest.innerText = currentQ.question;
     ans_a.innerText = currentQ.a;
@@ -72,10 +76,39 @@ function validate() {
                 correct += 1;
                 console.log('checking answer...')
                 document.getElementsByClassName('big-text')[0].innerHTML = "That's Correct!!!!"
-                document.getElementById('question').innerHTML = "Keep Going!"
+                document.getElementById('question').innerHTML = "<img src = 'right.jpg'>";
                 document.getElementById("sub").innerHTML = "Next Question";
                 showMessage();
             } else {
+
+                console.log('check if wrong..');
+                document.getElementsByClassName('big-text')[0].innerHTML = "Ooooopssss!!!! Wrong Answer.";
+                ans_div.style.display = "none";
+                document.getElementById('question').innerHTML = "<img src = 'wrong.jpg'>";
+                document.getElementById("sub").innerHTML = "Continue";
+                document.getElementById('restart').style.display = 'block';
+                document.getElementById('restart').onclick = function () {
+                    current = 0;
+                    correct = 0;
+                    document.getElementsByClassName('big-text')[0].innerHTML = "Quiz App";
+                    ans_div.style.display = "block";
+                    loadQuiz();
+                }
+
+                document.getElementById("sub").onclick = function () {
+
+                    current += 1;
+                    if (current >= quizData.length) {
+                        current = 0;
+
+                        document.getElementById('question').innerHTML = "<img src = 'over.jpg'>";
+                        alert('Quiz Finished!! Your Score is : ' + correct * 10, loadQuiz());
+                        //loadQuiz();
+                    }
+                    document.getElementsByClassName('big-text')[0].innerHTML = "Quiz App";
+                    ans_div.style.display = "block";
+                    loadQuiz();
+                }
 
             }
         } else {
@@ -105,18 +138,23 @@ function showMessage() {
     console.log(current + " show message called");
 
     ans_div.style.display = "none";
+    //document.getElementById('ans').innerHTML = "<img src = 'right.jpg'>";
 
     document.getElementById("sub").onclick = function () {
 
-        document.getElementsByClassName('big-text')[0].innerHTML = "Quiz App"
+        document.getElementsByClassName('big-text')[0].innerHTML = "Quiz App";
         document.getElementById("sub").innerHTML = "Submit";
         current += 1;
         console.log("onclick " + current + ' ' + quizData.length);
         ans_div.style.display = "block";
         if (current >= quizData.length) {
             current = 0;
-            alert('Quiz Finished!! Your Score is : ' + correct * 10);
-            loadQuiz();
+
+            document.getElementById('question').innerHTML = "<img src = 'over.jpg'>";
+            cor = correct;
+            correct = 0;
+            alert('Quiz Finished!! Your Score is : ' + cor * 10, loadQuiz());
+            //loadQuiz();
         } else {
             loadQuiz();
         }
