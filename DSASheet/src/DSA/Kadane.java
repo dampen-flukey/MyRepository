@@ -8,6 +8,8 @@ public class Kadane {
 
 	}
 
+	
+	
 	public static int maxSubArray(int[] nums) {
 		int start = 0;
 		int end = nums.length;
